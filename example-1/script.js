@@ -1,6 +1,7 @@
 var w = d3.select('.plot').node().clientWidth,
     h = d3.select('.plot').node().clientHeight;
 
+//use timeSeries
 var timeSeries = d3.timeSeries()
     .width(w)
     .height(h)
@@ -24,7 +25,7 @@ function dataLoaded(err,rows){
     //bind trips data to each station
     var plots = d3.select('.container').selectAll('.plot')
         .data(tripsByStation);
-
+    console.log(tripsByStation)
     plots
         .enter()
         .append('div').attr('class','plot');
@@ -35,7 +36,6 @@ function dataLoaded(err,rows){
                 .call(timeSeries)
                 .append('h2')
                 .text(d.key);
-
         })
 }
 
